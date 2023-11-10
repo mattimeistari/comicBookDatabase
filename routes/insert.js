@@ -1,6 +1,6 @@
 import express from "express";
 import path from "path";
-import fs from "fs";
+import colors from "colors";
 import { fileURLToPath } from "url";
 import { selectCharacters } from "../db/read/selectCharacters.js";
 import { selectGenres } from "../db/read/selectGenres.js";
@@ -9,8 +9,6 @@ import { selectPublishers } from "../db/read/selectPublishers.js";
 import { selectRoles } from "../db/read/selectRoles.js";
 import { selectSeries } from "../db/read/selectSeries.js";
 import { selectStories } from "../db/read/selectStories.js";
-
-import { logInsertStatement } from "../db/update/logInsertStatement.js";
 
 import { createGenre } from "../db/update/createGenre.js";
 
@@ -32,7 +30,7 @@ router.get("/", (req, res) => {
 	const series = selectSeries(dbFile);
 	const stories = selectStories(dbFile);
 
-	console.log(`Normal Page Loaded`);
+	console.log(colors.brightBlue.underline("Normal Page Loaded"));
 
 	res.render("insert", {
 
@@ -74,14 +72,11 @@ router.post("/comic", (req, res) => {
 
 router.post("/genre", (req, res) => {
 
-	createGenre(dbFile, req.body.genreName, req.body.genreDescription);
 
-	if (createGenre == "Failed") {
-		console.error("Function returned false");
-	} else {
-		console.log("Genre sucessfully created!");
-	};
-	
+	createGenre(dbFile, req.body.genreName, req.body.genreDescription);
+	console.log(colors.yellow("Genre sucessfully created!"));
+
+
 	res.redirect("/insert");
 
 });

@@ -1,0 +1,7 @@
+2023-11-10T15:30:42.550Z - INSERT INTO genres(name, description) VALUES (a, a)
+2023-11-10T15:31:29.905Z - INSERT INTO genres(name, description) VALUES (Sara, Sara is the hottest genre ever! :O)
+2023-11-10T15:39:00.416Z - INSERT INTO genres(name, description) VALUES (a, a)
+2023-11-10T15:41:03.454Z - INSERT INTO genres(name, description) VALUES (YellowTest, asd)
+2023-11-10T15:42:28.839Z - INSERT INTO genres(name, description) VALUES (Yo test, asd)
+2023-11-10T15:52:05.834Z - INSERT INTO genres(name, description) VALUES (asdasd, asdasd)
+2023-11-10T15:53:58.747Z - INSERT INTO genres(name, description) VALUES (Sara, Sara is the hottest genre ever! :O)
