@@ -3,7 +3,7 @@ import sqlite3
 
 # Create placeholder
 def placeholderText():
-    print("WTF!")
+    print("gg!")
     return
 
 
@@ -14,7 +14,7 @@ conn = sqlite3.connect("./db/comicBook.db")
 cursor = conn.cursor()
 
 # Prompt the user to print out the comic books
-print("Do you wanna print all the peopls? (Y/N)")
+print("Do you wanna print all the bocks? (Y/N)")
 choice = input("\nAnswer here:")
 
 # If the user chooses to print the comic books

@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= title %></title>
+</head>
+<body>
+    <h1>Insertion</h1>
+
+    <div class="publishers">
+        <h2>Add a publisher bro</h2>
+        <form action="/insert/publisher" method="post">
+            <fieldset>
+                <legend>Insert Publisher Data</legend>
+
+                <input type="text" name="name" id="name" placeholder="Publisher Name">
+                <input type="text" name="description" id="description" placeholder="Description">
+    
+                <button type="submit">Done!</button>
+    
+            </fieldset>
+
+        </form>
+    </div>
+
+    <div class="characterInsert">
+        <h2>Add a character bro</h2>
+        <form action="/insert/character" method="post">
+            <fieldset>
+                <legend>Insert Character Data</legend>
+
+                <input type="text" name="alias" id="alias" placeholder="Alias">
+                <input type="text" name="firstName" id="lastName" placeholder="First Name">
+                <input type="text" name="lastName" id="lastName" placeholder="Last Name">
+    
+                <button type="submit">Done!</button>
+
+            </fieldset>
+
+        </form>
+    </div>
+
+    <div class="personInsert">
+        <h2>Add a person bro</h2>
+        <form action="/insert/person" method="post">
+            <fieldset>
+                <legend>Insert Person Data</legend>
+
+                <input type="text" name="firstName" id="firstName" placeholder="First Name">
+                <input type="text" name="lastName" id="lastName" placeholder="Last Name">
+                
+                <button type="submit">Done!</button>
+
+            </fieldset>
+
+        </form>
+    </div>
+
+    <div class="genreInsert">
+        <h2>Add a genre bro</h2>
+        <form action="/insert/genre" method="post">
+            <fieldset>
+                <legend>Genre</legend>
+
+                <input type="text" name="name" id="name" placeholder="Name">
+                <input type="text" name="description" id="description" placeholder="Description">
+    
+                <button type="submit">Done!</button>
+
+            </fieldset>
+
+        </form>
+    </div>
+
+    <div class="seriesInsert">
+        <h2>Add a series bro</h2>
+        <form action="/insert/series" method="post">
+            <fieldset>
+                <legend>Series</legend>
+
+                <input type="text" name="name" id="name" placeholder="Name">
+                <input type="text" name="description" id="description" placeholder="Description">
+    
+                <button type="submit">Done!</button>
+
+            </fieldset>
+
+        </form>
+    </div>
+<!--------------------------- COMIC ----------------------------->
+    <div class="comicInsert">
+        <h2>Add a comic bro</h2>
+        <form action="/insert/comic" method="post">
+            <fieldset>
+                <legend>Comic</legend>
+
+                <input type="text" name="ISBN" id="ISBN" placeholder="ISBN">
+                <input type="date" name="publicationDate" id="publicationDate" placeholder="Publication Date">
+                <input type="text" name="summary" id="summary" placeholder="Summary">
+                <input type="number" name="issueNumber" id="issueNumber" placeholder="Issue Number">
+                <input type="number" name="pageCount" id="pageCount" placeholder="Page Count">
+                <input type="number" name="price" id="price" placeholder="Price">
+    
+                <label for="coverArtId">Cover Art Image</label>
+                <input type="file" name="coverArtId" id="coverArtId">
+                
+                <% for( let i = 0; i < roles.length; i++ ) { %>
+                    <!-- Roles and peoples -->
+                    <label for="personId"><%= roles[i].title %></label>
+                    <select name="personId" id="personId" multiple>
+                    <% for( let i = 0; i < people.length; i++ ) { %>
+                        <option value="<%= people[i].personId %>"><%= people[i].firstName + " " + people[i].lastName %></option>
+                    <% } %>
+                        <option value="Not Applicable"></option>
+                    </select>
+                <% } %>
+                
+
+                <label for="characterId">Characters: </label>
+                <select name="characterId" id="characterId" multiple>
+                    <% for( let i = 0; i < characters.length; i++ ) { %>
+                    <option value="<%= characters[i].characterId %>"><%= characters[i].alias %></option>
+                    <% } %>
+                </select>
+
+
+                <label for="publisherId">Publisher: </label>
+                <select name="publisherId" id="publisherId" multiple>
+                <% for( let i = 0; i < publishers.length; i++ ) { %>
+                    <option value="<%= publishers[i].publisherId %>"><%= publishers[i].name %></option>
+                <% } %>
+                </select>
+
+                <label for="genreId">Genre: </label>
+                <select name="genreId" id="genreId">
+                    <% for( let i = 0; i < genres.length; i++ ) { %>
+                        <option value="<%= genres[i].genreId %>"><%= genres[i].name %></option>
+                    <% } %>
+                </select>
+
+                <label for="seriesId">Series: </label>
+                <select name="seriesId" id="seriesId">
+                    <% for( let i = 0; i < series.length; i++ ) { %>
+                        <option value="<%= series[i].seriesId %>"><%= series[i].name %></option>
+                    <% } %>
+                </select>
+
+                <label for="storyId">Story: </label>
+                <select name="storyId" id="storyId">
+                    <% for( let i = 0; i < stories.length; i++ ) { %>
+                        <option value="<%= stories[i].storyId %>"><%= stories[i].title %></option>
+                    <% } %>
+                </select>
+
+                <button type="submit">Done!</button>
+            </fieldset>
+
+        </form>
+<!--------------------------- COMIC ----------------------------->
+    </div>
+
+    <div class="series">
+
+    </div>
+    
+</body>
+</html>
