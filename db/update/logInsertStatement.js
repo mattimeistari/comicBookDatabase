@@ -2,7 +2,7 @@ import fs from "fs";
 import path from "path";
 import { fileURLToPath } from "url";
 
-export function logInsertStatement(stmtString) {
+export function logInsertStatement(stmtString, tableBeingUpdated) {
 	const logsDirectory = path.join(fileURLToPath(new URL(".", import.meta.url)), "../../private/logs" );
 	const logFileName = "insertLogs.log";
 	const logFilePath = path.join(logsDirectory, logFileName);
@@ -18,6 +18,6 @@ export function logInsertStatement(stmtString) {
 	}
 
 	// Append the insert statement to the log file
-	const logEntry = `${new Date().toISOString()} - ${stmtString}\n`;
+	const logEntry = `Table ${tableBeingUpdated} has been updated. - ${stmtString}\n`;
 	fs.appendFileSync(logFilePath, logEntry);
 }

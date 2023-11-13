@@ -9,7 +9,8 @@ export const createGenre = (dbFile, name, description) => {
 		stmt.run(name, description);
 		db.close();
 
-		logInsertStatement(`INSERT INTO genres(name, description) VALUES (${name}, ${description})`);
+		const tableBeingUpdated = "genres";
+		logInsertStatement(`INSERT INTO genres(name, description) VALUES (${name}, ${description})`, tableBeingUpdated);
 
 		return true;
 	} catch (error) {

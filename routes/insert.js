@@ -11,6 +11,8 @@ import { selectSeries } from "../db/read/selectSeries.js";
 import { selectStories } from "../db/read/selectStories.js";
 
 import { createGenre } from "../db/update/createGenre.js";
+import { createPublisher } from "../db/update/createPublisher.js";
+import { createCharacter } from "../db/update/createCharacter.js";
 
 
 const router = express.Router();
@@ -49,14 +51,16 @@ router.get("/", (req, res) => {
 
 router.post("/publisher", (req, res) => {
 
-	console.log("publisher done");
+	createPublisher(dbFile, req.body.publisherName, req.body.publisherDescription);
+	console.log(colors.yellow("publisher created!"));
+
 	res.redirect("/insert");
 
 });
 
 router.post("/character", (req, res) => {
 
-	console.log("character done");
+	createCharacter(dbFile, req.body.characterAlias, req.body.characterFirstName, req.body.characterLastName, req.body.characterDescription);
 	res.redirect("/insert");
 
 });
@@ -64,18 +68,14 @@ router.post("/character", (req, res) => {
 router.post("/comic", (req, res) => {
 
 	
-
-	console.log("comic done");
 	res.redirect("/insert");
 
 });
 
 router.post("/genre", (req, res) => {
 
-
 	createGenre(dbFile, req.body.genreName, req.body.genreDescription);
-	console.log(colors.yellow("Genre sucessfully created!"));
-
+	console.log(colors.yellow("Genre created!"));
 
 	res.redirect("/insert");
 
