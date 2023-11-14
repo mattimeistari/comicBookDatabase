@@ -134,7 +134,7 @@
                 </select>
 
                 <label for="genreId">Genre: </label>
-                <select name="genreId" id="genreId">
+                <select name="genreId" id="genreId" multiple>
                     <% for( let i = 0; i < genres.length; i++ ) { %>
                         <option value="<%= genres[i].genreId %>"><%= genres[i].name %></option>
                     <% } %>

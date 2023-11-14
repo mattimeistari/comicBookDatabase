@@ -13,3 +13,4 @@ Table characters has been updated. - INSERT INTO characters(alias, firstName, la
 Table characters has been updated. - INSERT INTO characters(alias, firstName, lastName, description) VALUES (alias, firstname, undefined, deasdfip)
 Table characters has been updated. - INSERT INTO characters(alias, firstName, lastName, description) VALUES (jyfy, yuttu, undefined, tyutyutyu)
 Table characters has been updated. - INSERT INTO characters(alias, firstName, lastName, description) VALUES (al, fm, ln, desc)
+Table series has been updated. - INSERT INTO series(name, description) VALUES (Jereurjiseries, WOOOOOOOOOOOOOOOW)

@@ -1,5 +1,5 @@
 import Database from "better-sqlite3";
-import { logInsertStatement } from "../update/logInsertStatement.js";
+import { logInsertStatement } from "../../public/js/logInsertStatement.js";
 
 export const createPublisher = (dbFile, name, description) => {
 
