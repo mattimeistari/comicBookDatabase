@@ -97,7 +97,8 @@ router.post("/series", (req, res) => {
 
 router.post("/comic", (req, res) => {
 
-	createComic(dbFile, req.body.ISBN, publicationDate, summary, issueNumber, pageCount, price);
+	// createComic(dbFile, req.body.ISBN, publicationDate, summary, issueNumber, pageCount, price);
+	console.log(req.body);
 	res.redirect("/insert");
 
 	// Remember to seperately create file directory from the names of the series and characters and allat.

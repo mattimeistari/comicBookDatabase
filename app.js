@@ -2,6 +2,7 @@ import express from "express";
 import path from "path";
 import colors from "colors";
 import fs from "fs";
+import multer from "multer";
 import { fileURLToPath } from "url";
 import { router as frontPageRouter } from "./routes/index.js";
 import { router as loginPageRouter } from "./routes/login.js";
