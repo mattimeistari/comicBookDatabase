@@ -68,13 +68,6 @@ router.post("/character", (req, res) => {
 
 });
 
-router.post("/comic", (req, res) => {
-
-	console.log(req.body);
-	res.redirect("/insert");
-
-});
-
 router.post("/genre", (req, res) => {
 
 	createGenre(dbFile, req.body.genreName, req.body.genreDescription);
@@ -102,5 +95,14 @@ router.post("/series", (req, res) => {
 
 });
 
+router.post("/comic", (req, res) => {
+
+	createComic(dbFile, req.body.ISBN, publicationDate, summary, issueNumber, pageCount, price);
+	res.redirect("/insert");
+
+	// Remember to seperately create file directory from the names of the series and characters and allat.
+	// Remember to do the tengitöflur with for loop like Jeremias
+
+});
 
 export { router };
