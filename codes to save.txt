@@ -1,0 +1,24 @@
+function createSeriesFolder(seriesName) {
+	const seriesFolder = path.join("public", "images", "series", seriesName);
+	
+	try {
+		mkdir(seriesFolder);
+	} catch (err) {
+		if (err.code !== "EEXIST") {
+			writeFile(seriesFolder, coverImageName);
+		}
+	}
+
+}
+
+	// Extract relevant data from the form
+	const seriesName = Object.values(selectSeriesNameFromId(dbFile, req.body.seriesId) [0])[0];
+	const issueNumber = req.body.issueNumber;
+	console.log(seriesName, issueNumber);
+
+	// Custom formula for naming the cover image
+	const coverImageName = `Cover_${seriesName.replace(/ /g, "_")}_${issueNumber}.png`;
+
+	// Log the result for now, you can replace this with the actual logic to save the image
+	console.log("Series folder created:", seriesName.replace(/ /g, "_"));
+	console.log("Cover image name:", coverImageName);

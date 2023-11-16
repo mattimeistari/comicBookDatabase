@@ -1,6 +1,7 @@
 import express from "express";
 import path from "path";
 import colors from "colors";
+import fs from "fs";
 import { fileURLToPath } from "url";
 import { selectCharacters } from "../db/read/selectCharacters.js";
 import { selectGenres } from "../db/read/selectGenres.js";
@@ -15,6 +16,8 @@ import { createPublisher } from "../db/update/createPublisher.js";
 import { createCharacter } from "../db/update/createCharacter.js";
 import { createPerson } from "../db/update/createPerson.js";
 import { createSeries } from "../db/update/createSeries.js";
+
+import { createComic } from "../db/update/comicInserts/createComic.js";
 
 const router = express.Router();
 
@@ -95,15 +98,18 @@ router.post("/series", (req, res) => {
 
 });
 
+// createComic(dbFile, req.body.ISBN, publicationDate, summary, issueNumber, pageCount, price);
+
+// Remember to seperately create file directory from the names of the series and characters and allat.
+// Remember to do the tengitöflur with for loop like Jeremias
+
 router.post("/comic", (req, res) => {
 
-	// createComic(dbFile, req.body.ISBN, publicationDate, summary, issueNumber, pageCount, price);
 	console.log(req.body);
+
+	createComic(dbFile, req.body.ISBN, req.body.publicationDate, req.body.summary, req.body.issueNumber, req.body.pageCount, req.body.price);
+	
 	res.redirect("/insert");
-
-	// Remember to seperately create file directory from the names of the series and characters and allat.
-	// Remember to do the tengitöflur with for loop like Jeremias
-
 });
 
 export { router };
