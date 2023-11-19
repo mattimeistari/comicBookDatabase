@@ -89,6 +89,22 @@
 
         </form>
     </div>
+
+    <div class="storyInsert">
+        <h2>Add a story bro</h2>
+        <form action="/insert/story" method="post">
+            <fieldset>
+                <legend>Stories</legend>
+
+                <input type="text" name="storyTitle" id="storyTitleId" placeholder="Title">
+                <input type="text" name="storyDescription" id="storyDescriptionId" placeholder="Description">
+    
+                <button type="submit">Done!</button>
+
+            </fieldset>
+
+        </form>
+    </div>
 <!--------------------------- COMIC ----------------------------->
     <div class="comicInsert">
         <h2>Add a comic bro</h2>
@@ -109,7 +125,7 @@
                 <% for( let i = 0; i < roles.length; i++ ) { %>
                     <!-- Roles and peoples -->
                     <label for="personId"><%= roles[i].title %></label>
-                    <select name="personId" id="personId" multiple>
+                    <select name="<%= roles[i].title.toLowerCase() %>Id" id="<%= roles[i].title.toLowerCase() %>Id" multiple>
                     <% for( let i = 0; i < people.length; i++ ) { %>
                         <option value="<%= people[i].personId %>"><%= people[i].firstName + " " + people[i].lastName %></option>
                     <% } %>

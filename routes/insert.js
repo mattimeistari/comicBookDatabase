@@ -1,7 +1,6 @@
 import express from "express";
 import path from "path";
 import colors from "colors";
-import fs from "fs";
 import { fileURLToPath } from "url";
 import { selectCharacters } from "../db/read/selectCharacters.js";
 import { selectGenres } from "../db/read/selectGenres.js";
@@ -11,13 +10,21 @@ import { selectRoles } from "../db/read/selectRoles.js";
 import { selectSeries } from "../db/read/selectSeries.js";
 import { selectStories } from "../db/read/selectStories.js";
 
+import { findItemIdByTitle } from "../db/read/findItemIdByTitle.js";
+
 import { createGenre } from "../db/update/createGenre.js";
 import { createPublisher } from "../db/update/createPublisher.js";
 import { createCharacter } from "../db/update/createCharacter.js";
 import { createPerson } from "../db/update/createPerson.js";
 import { createSeries } from "../db/update/createSeries.js";
+import { createStory } from "../db/update/createStory.js";
 
 import { createComic } from "../db/update/comicInserts/createComic.js";
+import { createComicCharacter } from "../db/update/comicInserts/comicCharacter.js";
+import { createComicGenre } from "../db/update/comicInserts/comicGenre.js";
+import { createComicRolePerson } from "../db/update/comicInserts/comicRolePerson.js";
+import { createComicSeries } from "../db/update/comicInserts/comicSeries.js";
+import { createComicStory } from "../db/update/comicInserts/comicStory.js";
 
 const router = express.Router();
 
@@ -98,6 +105,15 @@ router.post("/series", (req, res) => {
 
 });
 
+router.post("/story", (req, res) => {
+
+	createStory(dbFile, req.body.storyTitle, req.body.storyDescription);
+	console.log(colors.yellow("Story created!"));
+
+	res.redirect("/insert");
+
+});
+
 // createComic(dbFile, req.body.ISBN, publicationDate, summary, issueNumber, pageCount, price);
 
 // Remember to seperately create file directory from the names of the series and characters and allat.
@@ -107,9 +123,66 @@ router.post("/comic", (req, res) => {
 
 	console.log(req.body);
 
-	createComic(dbFile, req.body.ISBN, req.body.publicationDate, req.body.summary, req.body.issueNumber, req.body.pageCount, req.body.price);
+	const newComicId = createComic(dbFile, req.body.ISBN, req.body.publicationDate, req.body.summary, req.body.issueNumber, req.body.pageCount, req.body.price);
+
+	const roles = selectRoles(dbFile);
+	const roleTypes = roles
+		.filter(role => req.body[`${role.title.toLowerCase()}Id`] !== undefined)
+		.map(role => role.title);
+
+	console.log(colors.magenta(roleTypes));
+
+	const handleRoleArrays = (roleTypes, req, dbFile, comicId, roles) => {
+		roleTypes.forEach(roleType => {
+			const reqArray = req[`${roleType.toLowerCase()}Id`];
+
+			if (reqArray) {
+				const itemId = findItemIdByTitle(roles, roleType);
+
+				for (let i = 0; i < reqArray.length; i++) {
+					createComicRolePerson(dbFile, comicId, itemId, reqArray[i]); 
+				}
+			}
+		});
+	};
+
+	handleRoleArrays(roleTypes, req.body, dbFile, newComicId, roles);
+
+
+	if (req.body.characterId) {
+		for (let i = 0; i < req.body.characterId.length; i++) {
+			createComicCharacter(dbFile, newComicId, req.body.characterId[i]);
+		}
+	}
+
+	// REMEMVER TO FIX THIS SHIT
+
+	//if (req.body.publisherId) {
+	//	for (let i = 0; i < req.body.publisherId.length; i++) {
+	//		createComicCharacter(dbFile, newComicId, req.body.publisherId[i]);
+	//	}
+	//}
+
+	if (req.body.genreId) {
+		for (let i = 0; i < req.body.genreId.length; i++) {
+			createComicGenre(dbFile, newComicId, req.body.genreId[i]);
+		}
+	}
+
+	if (req.body.seriesId) {
+		for (let i = 0; i < req.body.seriesId.length; i++) {
+			createComicSeries(dbFile, newComicId, req.body.seriesId[i]);
+		}
+	}
+	
+	if (req.body.storyId) {
+		for (let i = 0; i < req.body.storyId.length; i++) {
+			createComicStory(dbFile, newComicId, req.body.storyId[i]);
+		}
+	}
 	
 	res.redirect("/insert");
+
 });
 
 export { router };
