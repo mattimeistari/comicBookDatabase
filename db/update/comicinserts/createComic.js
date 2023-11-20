@@ -1,20 +1,20 @@
 import Database from "better-sqlite3";
 import { logInsertStatement } from "../../../public/js/logInsertStatement.js";
 
-export const createComic = (dbFile, ISBN, publicationDate, summary, issueNumber, pageCount, price) => {
+export const createComic = (dbFile, ISBN, publicationDate, summary, issueNumber, pageCount, price, publisherId) => {
 
 	try {
 
 		const db = new Database(dbFile);
-		const stmt = db.prepare("INSERT INTO comics(ISBN, publicationDate, summary, issueNumber, pageCount, price) VALUES (?, ?, ?, ?, ?, ?)");
-		const runStmt = stmt.run(ISBN, publicationDate, summary, issueNumber, pageCount, price);
+		const stmt = db.prepare("INSERT INTO comics(ISBN, publicationDate, summary, issueNumber, pageCount, price, publisherId) VALUES (?, ?, ?, ?, ?, ?, ?)");
+		const runStmt = stmt.run(ISBN, publicationDate, summary, issueNumber, pageCount, price, publisherId);
 
 		const newComicId = runStmt.lastInsertRowid;
 
 		db.close();
 
 		const tableBeingUpdated = "comics independant";
-		logInsertStatement(`INSERT INTO comics(name, description) VALUES (${ISBN}, ${publicationDate}, ${summary}, ${issueNumber}, ${pageCount}, ${price})`, tableBeingUpdated);
+		logInsertStatement(`INSERT INTO comics(name, description) VALUES (${ISBN}, ${publicationDate}, ${summary}, ${issueNumber}, ${pageCount}, ${price}, ${publisherId})`, tableBeingUpdated);
 
 		return newComicId;
 

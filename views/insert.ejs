@@ -105,6 +105,28 @@
 
         </form>
     </div>
+
+    <div class="imageInsert">
+        <h2>Add a image bro</h2>
+        <form action="/insert/image" method="post">
+            <fieldset>
+                <legend>Image</legend>
+
+                <input type="text" name="imageLink" id="imageLinkId" placeholder="Link To File">
+
+                <label for="imageConnection"></label>
+                <select name="imageConnection" id="imageConnectionId">
+                <% for (let key in imageDependancies) { %>
+                    <option value="<%= imageDependancies[key] %>"><%= key %></option>
+                <% } %>
+                </select>
+
+                <button type="submit">Done!</button>
+
+            </fieldset>
+
+        </form>
+    </div>
 <!--------------------------- COMIC ----------------------------->
     <div class="comicInsert">
         <h2>Add a comic bro</h2>
@@ -143,7 +165,7 @@
 
 
                 <label for="publisherId">Publisher: </label>
-                <select name="publisherId" id="publisherId" multiple>
+                <select name="publisherId" id="publisherId">
                 <% for( let i = 0; i < publishers.length; i++ ) { %>
                     <option value="<%= publishers[i].publisherId %>"><%= publishers[i].name %></option>
                 <% } %>

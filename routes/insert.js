@@ -43,6 +43,12 @@ router.get("/", (req, res) => {
 	const series = selectSeries(dbFile);
 	const stories = selectStories(dbFile);
 
+	const imageDependancies = {
+		"Character": "imageCharacter",
+		"Person": "imagePerson",
+		"Comic": "comics"
+	};
+
 	console.log(colors.brightBlue.underline("Normal Page Loaded"));
 
 	res.render("insert", {
@@ -54,7 +60,8 @@ router.get("/", (req, res) => {
 		roles,
 		genres,
 		series,
-		stories
+		stories,
+		imageDependancies
 
 	});
 
@@ -114,6 +121,15 @@ router.post("/story", (req, res) => {
 
 });
 
+router.post("/image", (req, res) => {
+
+	console.log(req.body);
+	// createImage(dbFile, req.body.imageLink, req.body.imageConnection);
+
+	res.redirect("/insert");
+
+});
+
 // createComic(dbFile, req.body.ISBN, publicationDate, summary, issueNumber, pageCount, price);
 
 // Remember to seperately create file directory from the names of the series and characters and allat.
@@ -123,7 +139,7 @@ router.post("/comic", (req, res) => {
 
 	console.log(req.body);
 
-	const newComicId = createComic(dbFile, req.body.ISBN, req.body.publicationDate, req.body.summary, req.body.issueNumber, req.body.pageCount, req.body.price);
+	const newComicId = createComic(dbFile, req.body.ISBN, req.body.publicationDate, req.body.summary, req.body.issueNumber, req.body.pageCount, req.body.price, req.body.publisherId);
 
 	const roles = selectRoles(dbFile);
 	const roleTypes = roles
@@ -132,15 +148,17 @@ router.post("/comic", (req, res) => {
 
 	console.log(colors.magenta(roleTypes));
 
-	const handleRoleArrays = (roleTypes, req, dbFile, comicId, roles) => {
+	const handleRoleArrays = (roleTypes, reqBody, dbFile, comicId, roles) => {
 		roleTypes.forEach(roleType => {
-			const reqArray = req[`${roleType.toLowerCase()}Id`];
+			const peopleArray = reqBody[`${roleType.toLowerCase()}Id`];
 
-			if (reqArray) {
-				const itemId = findItemIdByTitle(roles, roleType);
+			console.log(colors.bgRed(peopleArray));
 
-				for (let i = 0; i < reqArray.length; i++) {
-					createComicRolePerson(dbFile, comicId, itemId, reqArray[i]); 
+			if (peopleArray) {
+				const roleId = findItemIdByTitle(roles, roleType);
+
+				for (let i = 0; i < peopleArray.length; i++) {
+					createComicRolePerson(dbFile, comicId, roleId, peopleArray[i]);
 				}
 			}
 		});
