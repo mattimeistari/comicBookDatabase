@@ -9,6 +9,7 @@ import { selectPublishers } from "../db/read/selectPublishers.js";
 import { selectRoles } from "../db/read/selectRoles.js";
 import { selectSeries } from "../db/read/selectSeries.js";
 import { selectStories } from "../db/read/selectStories.js";
+import { selectCountries } from "../db/read/selectCountries.js";
 
 import { findItemIdByTitle } from "../db/read/findItemIdByTitle.js";
 
@@ -42,6 +43,7 @@ router.get("/", (req, res) => {
 	const genres = selectGenres(dbFile);
 	const series = selectSeries(dbFile);
 	const stories = selectStories(dbFile);
+	const countries = selectCountries(dbFile);
 
 	const imageDependancies = {
 		"Character": "imageCharacter",
@@ -61,7 +63,8 @@ router.get("/", (req, res) => {
 		genres,
 		series,
 		stories,
-		imageDependancies
+		imageDependancies,
+		countries
 
 	});
 
@@ -69,7 +72,7 @@ router.get("/", (req, res) => {
 
 router.post("/publisher", (req, res) => {
 
-	createPublisher(dbFile, req.body.publisherName, req.body.publisherDescription);
+	createPublisher(dbFile, req.body.publisherName, req.body.publisherDescription, req.body.publisherCountry);
 	console.log(colors.yellow("publisher created!"));
 
 	res.redirect("/insert");
@@ -96,7 +99,7 @@ router.post("/genre", (req, res) => {
 
 router.post("/person", (req, res) => {
 
-	createPerson(dbFile, req.body.personFirstName, req.body.personLastName);
+	createPerson(dbFile, req.body.personFirstName, req.body.personLastName, req.body.personCountry);
 	console.log(colors.yellow("Person created!"));
 	
 	res.redirect("/insert");
@@ -136,8 +139,6 @@ router.post("/image", (req, res) => {
 // Remember to do the tengitöflur with for loop like Jeremias
 
 router.post("/comic", (req, res) => {
-
-	console.log(req.body);
 
 	const newComicId = createComic(dbFile, req.body.ISBN, req.body.publicationDate, req.body.summary, req.body.issueNumber, req.body.pageCount, req.body.price, req.body.publisherId);
 

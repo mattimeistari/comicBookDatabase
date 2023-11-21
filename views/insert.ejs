@@ -16,6 +16,13 @@
 
                 <input type="text" name="publisherName" id="publisherNameId" placeholder="Publisher Name">
                 <input type="text" name="publisherDescription" id="publisherDescriptionId" placeholder="Description">
+
+                <label for="publisherCountry"></label>
+                <select name="publisherCountry" id="publisherCountryId" multiple>
+                <% for( let i = 0; i < countries.length; i++ ) { %>
+                    <option value="<%= countries[i].countryId %>"><%= countries[i].name %></option>
+                <% } %>
+                </select>
     
                 <button type="submit">Done!</button>
     
