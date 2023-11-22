@@ -11,6 +11,10 @@ import { selectSeries } from "../db/read/selectSeries.js";
 import { selectStories } from "../db/read/selectStories.js";
 import { selectCountries } from "../db/read/selectCountries.js";
 
+import { selectCharacterNames } from "../db/read/selectCharacterNames.js";
+import { selectPeopleNames } from "../db/read/selectPeopleNames.js";
+import { selectComicNames } from "../db/read/selectComicNames.js";
+
 import { findItemIdByTitle } from "../db/read/findItemIdByTitle.js";
 
 import { createGenre } from "../db/update/createGenre.js";
@@ -19,6 +23,7 @@ import { createCharacter } from "../db/update/createCharacter.js";
 import { createPerson } from "../db/update/createPerson.js";
 import { createSeries } from "../db/update/createSeries.js";
 import { createStory } from "../db/update/createStory.js";
+import { createImage } from "../db/update/createImage.js";
 
 import { createComic } from "../db/update/comicInserts/createComic.js";
 import { createComicCharacter } from "../db/update/comicInserts/comicCharacter.js";
@@ -45,6 +50,10 @@ router.get("/", (req, res) => {
 	const stories = selectStories(dbFile);
 	const countries = selectCountries(dbFile);
 
+	const characterArray = selectCharacterNames(dbFile);
+	const personArray = selectPeopleNames(dbFile);
+	const comicArray = selectComicNames(dbFile);
+
 	const imageDependancies = {
 		"Character": "imageCharacter",
 		"Person": "imagePerson",
@@ -64,7 +73,10 @@ router.get("/", (req, res) => {
 		series,
 		stories,
 		imageDependancies,
-		countries
+		countries,
+		characterArray,
+		personArray,
+		comicArray
 
 	});
 
@@ -127,7 +139,12 @@ router.post("/story", (req, res) => {
 router.post("/image", (req, res) => {
 
 	console.log(req.body);
-	// createImage(dbFile, req.body.imageLink, req.body.imageConnection);
+
+	const keys = Object.keys(req.body);
+	const thirdPropertyName = keys[2];
+	const thirdPropertyValue = req.body[thirdPropertyName];
+
+	createImage(dbFile, req.body.imageTitle, req.body.imageLink, thirdPropertyValue, thirdPropertyName);
 
 	res.redirect("/insert");
 

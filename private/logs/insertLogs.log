@@ -527,3 +527,7 @@ Table publishers has been updated. - INSERT INTO publishers(name, description) V
 Table countryPublisher has been updated. - INSERT INTO countryPublisher(name, description) VALUES (jhgfhgfdhgfdhgfdhgf, hgfdhgfhgf)
 Table countryPublisher has been updated. - INSERT INTO countryPublisher(name, description) VALUES (jhgfhgfdhgfdhgfdhgf, hgfdhgfhgf)
 Table countryPublisher has been updated. - INSERT INTO countryPublisher(name, description) VALUES (jhgfhgfdhgfdhgfdhgf, hgfdhgfhgf)
+Table images has been updated. - INSERT INTO images(title, link) VALUES (firstEverTest, test/test/test1.png)
+Table images has been updated. - INSERT INTO images(title, link) VALUES (secondEverTest, second/Test/ever.jpg)
+Table images has been updated. - INSERT INTO images(title, link) VALUES (thirdTest, a/a/a)
+Table images has been updated. - INSERT INTO images(title, link) VALUES (asdasdasd, /ytr/yrt/yt/yr/t/ry)
