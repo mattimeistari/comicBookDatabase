@@ -29,10 +29,7 @@ export const createImage = (dbFile, title, link, connectionId, tableToConnect) =
 		} else if (tableToConnect === "comicImageConnection") {
 			console.log(`Table ${tableToConnect} has been selected, and the code has matched the two values.`);
 
-			// ATTENTION //
-			// I HAVE TO FIX THIS SO THAT IT UPDATES THE COMIC WITH HTE COMICID "connectionId" AND CHANGES THE coverArtId VALUE TO "newImageId" //
-			// ATTENTION //
-			const stmt = db.prepare("");
+			const stmt = db.prepare("UPDATE comics SET coverArtId = ? WHERE comicId = ?");
 			stmt.run(newImageId, connectionId);
 
 		}
@@ -43,7 +40,7 @@ export const createImage = (dbFile, title, link, connectionId, tableToConnect) =
 
 	} catch (error) {
 
-		console.error("Error creating genre:", error.message);
+		console.error("Error creating image:", error.message);
 		return false;
 		
 	}

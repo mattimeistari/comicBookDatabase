@@ -17,7 +17,7 @@ export const createComicRolePerson = (dbFile, comicId, roleId, personId) => {
 
 	} catch (error) {
 
-		console.error("Error creating comicRolePerson:", error.message);
+		console.error("Error creating comicRolePerson:", error.stack);
 		return false;
         
 	}

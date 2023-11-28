@@ -177,7 +177,7 @@
                     <% for( let i = 0; i < people.length; i++ ) { %>
                         <option value="<%= people[i].personId %>"><%= people[i].firstName + " " + people[i].lastName %></option>
                     <% } %>
-                        <option value="Not Applicable"></option>
+                        <option value="" selected disabled></option>
                     </select>
                 <% } %>
                 

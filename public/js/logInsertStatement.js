@@ -17,7 +17,12 @@ export function logInsertStatement(stmtString, tableBeingUpdated) {
 		fs.writeFileSync(logFilePath, ""); // Create an empty file
 	}
 
+	// Make current date format and
 	// Append the insert statement to the log file
-	const logEntry = `Table ${tableBeingUpdated} has been updated. - ${stmtString}\n`;
+	const currentDate = new Date();
+	const formattedDate = new Intl.DateTimeFormat("en-US", { month: "long", day: "numeric", hour: "numeric", minute: "numeric" }).format(currentDate);
+
+	const logEntry = `${formattedDate} - Table ${tableBeingUpdated} has been updated. - ${stmtString}\n`;
+
 	fs.appendFileSync(logFilePath, logEntry);
 }

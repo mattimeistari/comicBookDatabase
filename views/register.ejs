@@ -6,6 +6,45 @@
     <title><%= title %></title>
 </head>
 <body>
+    <h1><%= header %></h1>
+    <form action="/register" method="POST" onsubmit="return validatePassword()">
+        
+        <table>
+            <tr>
+                <td><p>[ username ]</p></td>
+                <td>
+                    <input type="text" name="username" id="username" required>
+                </td>
+            </tr>
     
+            <tr>
+                <td><p>[ email ]</p></td>
+                <td>
+                    <input type="email" name="email" id="email" required>
+                </td>
+            </tr>
+    
+            <tr>
+                <td><p>[ password ]</p></td>
+                <td>
+                    <input type="password" name="password" id="password" required>
+                </td>
+            </tr>
+    
+            <tr>
+                <td><p>[ confirm password ]</p></td>
+                <td>
+                    <input type="password" name="confirmPassword" id="confirmPassword" required>
+                </td>
+            </tr>
+    
+            <tr aria-rowspan="2">
+                <button type="submit">
+                    attempt
+                </button>
+            </tr>
+        </table>
+
+    </form>
 </body>
 </html>

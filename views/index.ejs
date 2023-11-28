@@ -6,6 +6,15 @@
     <title><%= title %></title>
 </head>
 <body>
-    <h1>indecks</h1>
+    <%- include('includes/navbar') %>
+
+    <div class="items">
+    <% for( let i = 0; i < comics.length; i++ ) { %>
+    <a href="products/rememberToFinish">
+        <img src="<% comics[i].coverArtLink %>" alt="<% comics[i].name %>">
+    </a>
+    <% } %>
+    </div>
+
 </body>
 </html>

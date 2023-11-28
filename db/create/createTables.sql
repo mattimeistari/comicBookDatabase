@@ -150,3 +150,11 @@ CREATE TABLE comicStory (
     FOREIGN KEY (comicId) REFERENCES comics(comicId)
 );
 
+CREATE TABLE users (
+    userId INTEGER PRIMARY KEY AUTOINCREMENT,
+    username VARCHAR(16) NOT NULL,
+    email VARCHAR(255) NOT NULL,
+    password VARCHAR(255) NOT NULL,
+    imageId VARCHAR(255),
+    FOREIGN KEY (imageId) REFERENCES images(imageId)
+);

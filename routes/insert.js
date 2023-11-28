@@ -150,11 +150,6 @@ router.post("/image", (req, res) => {
 
 });
 
-// createComic(dbFile, req.body.ISBN, publicationDate, summary, issueNumber, pageCount, price);
-
-// Remember to seperately create file directory from the names of the series and characters and allat.
-// Remember to do the tengitöflur with for loop like Jeremias
-
 router.post("/comic", (req, res) => {
 
 	const newComicId = createComic(dbFile, req.body.ISBN, req.body.publicationDate, req.body.summary, req.body.issueNumber, req.body.pageCount, req.body.price, req.body.publisherId);
@@ -190,14 +185,6 @@ router.post("/comic", (req, res) => {
 			createComicCharacter(dbFile, newComicId, req.body.characterId[i]);
 		}
 	}
-
-	// REMEMVER TO FIX THIS SHIT
-
-	//if (req.body.publisherId) {
-	//	for (let i = 0; i < req.body.publisherId.length; i++) {
-	//		createComicCharacter(dbFile, newComicId, req.body.publisherId[i]);
-	//	}
-	//}
 
 	if (req.body.genreId) {
 		for (let i = 0; i < req.body.genreId.length; i++) {
