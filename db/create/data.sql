@@ -85,9 +85,9 @@ VALUES  ("Marvel Comics", "Marvel Comics is a comic book publisher that has crea
 /* temp */
 /* "Cover_[SeriesName]_[VolumeNumber]_[BookNumber].jpg" */
 INSERT INTO images (title, link)
-VALUES  ("Spider-Man Volume 1, #52", "images/Spider-Man_Vol_1/Cover_Spider-Man_1_52.png"),
-        ("Catwoman Volume 1, #1", "images/Catwoman_Vol_1/Cover_Catwoman_1_1.png"),
-        ("Spawn Volume 1, #1", "images/Spawn_Vol_1/Cover_Spawn_1_1.png"),
+VALUES  ("Spider-Man Volume 1, #52", "images/series/Spider-Man_Vol_1/Cover_Spider-Man_1_52.png"),
+        ("Catwoman Volume 1, #1", "images/series/Catwoman_Vol_1/Cover_Catwoman_1_1.png"),
+        ("Spawn Volume 1, #1", "images/series/Spawn_Vol_1/Cover_Spawn_1_1.png"),
 
         ("Scarlet Spider Main", "images/characters/scarletSpider_benReilly_main.png"),
         ("Catwoman Main", "images/characters/catwoman_selinaKyle_main.png"),

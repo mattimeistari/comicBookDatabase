@@ -1,0 +1,106 @@
+body {
+    background-color: #1a1a1a;
+    color: #ffffff;
+    font-family: 'Arial', sans-serif;
+}
+
+.header {
+    background-color: #333333;
+    padding: 20px;
+    text-align: center;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.comic-card {
+    background-color: #262626;
+    color: #ffffff;
+    border-radius: 8px;
+    padding: 20px;
+    margin: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    display: inline-block;
+    text-align: center;
+}
+
+.comic-image {
+    max-width: 100%;
+    height: 265px;
+    width: auto;
+    border-radius: 8px;
+}
+
+a {
+    color: #ffa500;
+    text-decoration: none;
+}
+
+a:hover {
+    color: #ffcc00;
+}
+
+button {
+    background-color: #ffa500;
+    color: #1a1a1a;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #ffcc00;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+fieldset {
+    border: 1px solid #333333;
+    border-radius: 8px;
+    padding: 20px;
+    margin: 20px 0;
+}
+
+legend {
+    color: #ffa500;
+    font-size: 1.2em;
+    margin-bottom: 10px;
+}
+
+input[type="text"],
+input[type="date"],
+input[type="number"],
+select,
+button {
+    margin: 10px;
+    padding: 10px;
+    border: 1px solid #333333;
+    border-radius: 4px;
+    background-color: #262626;
+    color: #ffffff;
+}
+
+input[type="file"] {
+    margin: 10px;
+}
+
+.comicInsert,
+.genreInsert,
+.seriesInsert,
+.storyInsert,
+.imageInsert,
+.personInsert,
+.characterInsert,
+.publishers {
+    background-color: #262626;
+    color: #ffffff;
+    border-radius: 8px;
+    padding: 20px;
+    margin: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}

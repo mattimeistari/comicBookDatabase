@@ -13,7 +13,6 @@ router.get("/", (req, res) => {
 	const title = "💀💀💀";
 
 	const comics = selectComicNamesAndImages(dbFile);
-	console.log(comics);
     
 	res.render("index", {
 
