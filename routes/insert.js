@@ -60,8 +60,6 @@ router.get("/", (req, res) => {
 		"Comic": "comics"
 	};
 
-	console.log(colors.brightBlue.underline("Normal Page Loaded"));
-
 	res.render("insert", {
 
 		title,
