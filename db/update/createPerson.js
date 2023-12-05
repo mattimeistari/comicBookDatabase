@@ -13,7 +13,7 @@ export const createPerson = (dbFile, firstName, lastName, countries) => {
 		
 
 		let tableBeingUpdated = "people";
-		logInsertStatement(`INSERT INTO people(firstName, lastName) VALUES (${firstName}, ${lastName})`, tableBeingUpdated);
+		logInsertStatement(`INSERT INTO people(firstName, lastName) VALUES ('${firstName}', '${lastName}')`, tableBeingUpdated);
 
 		for (let i = 0; i < countries.length; i++) {
 

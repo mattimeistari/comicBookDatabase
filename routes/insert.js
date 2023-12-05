@@ -31,6 +31,7 @@ import { createComicGenre } from "../db/update/comicInserts/comicGenre.js";
 import { createComicRolePerson } from "../db/update/comicInserts/comicRolePerson.js";
 import { createComicSeries } from "../db/update/comicInserts/comicSeries.js";
 import { createComicStory } from "../db/update/comicInserts/comicStory.js";
+import { createSeriesStory } from "../db/update/comicInserts/seriesStory.js";
 
 const router = express.Router();
 
@@ -190,16 +191,16 @@ router.post("/comic", (req, res) => {
 		}
 	}
 
-	if (req.body.seriesId) {
+	if (req.body.seriesId && req.body.storyId) {
 		for (let i = 0; i < req.body.seriesId.length; i++) {
 			createComicSeries(dbFile, newComicId, req.body.seriesId[i]);
 		}
-	}
-	
-	if (req.body.storyId) {
+
 		for (let i = 0; i < req.body.storyId.length; i++) {
 			createComicStory(dbFile, newComicId, req.body.storyId[i]);
 		}
+
+		createSeriesStory(dbFile, req.body.seriesId, req.body.storyId);
 	}
 	
 	res.redirect("/insert");

@@ -11,7 +11,7 @@ export const createSeries = (dbFile, name, description) => {
 		db.close();
 
 		const tableBeingUpdated = "series";
-		logInsertStatement(`INSERT INTO series(name, description) VALUES (${name}, ${description})`, tableBeingUpdated);
+		logInsertStatement(`INSERT INTO series(name, description) VALUES ('${name}', '${description}')`, tableBeingUpdated);
 
 		return true;
 

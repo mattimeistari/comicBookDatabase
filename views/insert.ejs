@@ -58,7 +58,14 @@
 
                 <input type="text" name="personFirstName" id="personFirstNameId" placeholder="First Name">
                 <input type="text" name="personLastName" id="personLastNameId" placeholder="Last Name">
-                
+
+                <label for="personCountry"></label>
+                <select name="personCountry" id="personCountryId" multiple>
+                <% for( let i = 0; i < countries.length; i++ ) { %>
+                    <option value="<%= countries[i].countryId %>"><%= countries[i].name %></option>
+                <% } %>
+
+                </select>
                 <button type="submit">Done!</button>
 
             </fieldset>
@@ -114,46 +121,7 @@
         </form>
     </div>
 
-    <div class="imageInsert">
-        <h2>Add a image bro</h2>
-        <form action="/insert/image" method="post">
-            <fieldset>
-                <legend>Image</legend>
 
-                <input type="text" name="imageTitle" id="imageTitleId" placeholder="Image Title">
-
-                <input type="text" name="imageLink" id="imageLinkId" placeholder="Link To File">
-
-                <label for="characterImageConnection">If your image is of a character, please choose a character: </label>
-                <select name="characterImageConnection" id="characterImageConnectionId">
-                    <option value="" selected disabled>Select a character</option>
-                <% for( let i = 0; i < characterArray.length; i++ ) { %>
-                    <option value="<%= characterArray[i].characterId %>"><%= characterArray[i].alias %></option>
-                <% } %>
-                </select>
-
-                <label for="personImageConnection">If your image is of a person, please choose a person: </label>
-                <select name="personImageConnection" id="personImageConnectionId">
-                    <option value="" selected disabled>Select a person</option>
-                <% for( let i = 0; i < personArray.length; i++ ) { %>
-                    <option value="<%= personArray[i].personId %>"><%= personArray[i].fullName %></option>
-                <% } %>
-                </select>
-
-                <label for="comicImageConnection">If your image is the cover art of a comic, please choose a comic: </label>
-                <select name="comicImageConnection" id="comicImageConnectionId">
-                    <option value="" selected disabled>Select a comic</option>
-                <% for( let i = 0; i < comicArray.length; i++ ) { %>
-                    <option value="<%= comicArray[i].comicId %>"><%= comicArray[i].name %></option>
-                <% } %>
-                </select>
-
-                <button type="submit">Done!</button>
-
-            </fieldset>
-
-        </form>
-    </div>
 <!--------------------------- COMIC ----------------------------->
     <div class="comicInsert">
         <h2>Add a comic bro</h2>
@@ -220,6 +188,48 @@
                 </select>
 
                 <button type="submit">Done!</button>
+            </fieldset>
+
+        </form>
+    </div>
+
+
+    <div class="imageInsert">
+        <h2>Add a image bro</h2>
+        <form action="/insert/image" method="post">
+            <fieldset>
+                <legend>Image</legend>
+
+                <input type="text" name="imageTitle" id="imageTitleId" placeholder="Image Title">
+
+                <input type="text" name="imageLink" id="imageLinkId" placeholder="Link To File">
+
+                <label for="characterImageConnection">If your image is of a character, please choose a character: </label>
+                <select name="characterImageConnection" id="characterImageConnectionId">
+                    <option value="" selected disabled>Select a character</option>
+                <% for( let i = 0; i < characterArray.length; i++ ) { %>
+                    <option value="<%= characterArray[i].characterId %>"><%= characterArray[i].alias %></option>
+                <% } %>
+                </select>
+
+                <label for="personImageConnection">If your image is of a person, please choose a person: </label>
+                <select name="personImageConnection" id="personImageConnectionId">
+                    <option value="" selected disabled>Select a person</option>
+                <% for( let i = 0; i < personArray.length; i++ ) { %>
+                    <option value="<%= personArray[i].personId %>"><%= personArray[i].fullName %></option>
+                <% } %>
+                </select>
+
+                <label for="comicImageConnection">If your image is the cover art of a comic, please choose a comic: </label>
+                <select name="comicImageConnection" id="comicImageConnectionId">
+                    <option value="" selected disabled>Select a comic</option>
+                <% for( let i = 0; i < comicArray.length; i++ ) { %>
+                    <option value="<%= comicArray[i].comicId %>"><%= comicArray[i].name %></option>
+                <% } %>
+                </select>
+
+                <button type="submit">Done!</button>
+
             </fieldset>
 
         </form>

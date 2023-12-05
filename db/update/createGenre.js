@@ -11,7 +11,7 @@ export const createGenre = (dbFile, name, description) => {
 		db.close();
 
 		const tableBeingUpdated = "genres";
-		logInsertStatement(`INSERT INTO genres(name, description) VALUES (${name}, ${description})`, tableBeingUpdated);
+		logInsertStatement(`INSERT INTO genres(name, description) VALUES ('${name}', '${description}')`, tableBeingUpdated);
 
 		return true;
 

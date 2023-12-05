@@ -11,7 +11,7 @@ export const createCharacter = (dbFile, alias, firstName, lastName, description)
 		db.close();
 
 		const tableBeingUpdated = "characters";
-		logInsertStatement(`INSERT INTO characters(alias, firstName, lastName, description) VALUES (${alias}, ${firstName}, ${lastName}, ${description})`, tableBeingUpdated);
+		logInsertStatement(`INSERT INTO characters(alias, firstName, lastName, description) VALUES ('${alias}', '${firstName}', '${lastName}', '${description}')`, tableBeingUpdated);
 
 		return true;
 

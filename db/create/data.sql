@@ -147,7 +147,8 @@ VALUES  ("United States of America"),
         ("China"),
         ("Germany"),
         ("Iceland"),
-        ("Japan");
+        ("Japan"),
+        ("Italy");
 
 
 INSERT INTO roles (title, description)
@@ -226,10 +227,6 @@ VALUES  (1, 1, 1), (1, 2, 2), (1, 3, 3), (1, 4, 4), (1, 5, 5), (1, 5, 6), (1, 6,
 INSERT INTO imageCharacter (imageId, characterId)
 VALUES  (4, 1), (5, 13), (6, 24);
 
-
--- INSERT INTO imagePerson (imageId, personId)
--- VALUES  ;
-
 INSERT INTO comicSeries (comicId, seriesId)
 VALUES  (1, 1), (2, 2), (3, 3);
 
@@ -246,3 +243,5 @@ VALUES  (1, 1), (2, 2), (3, 3);
 
 INSERT INTO comicStory (comicId, storyId)
 VALUES  (1, 1), (2, 2), (3, 3);
+
+

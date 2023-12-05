@@ -13,7 +13,7 @@ export const createPublisher = (dbFile, name, description, countries) => {
 
 
 		let tableBeingUpdated = "publishers";
-		logInsertStatement(`INSERT INTO publishers(name, description) VALUES (${name}, ${description})`, tableBeingUpdated);
+		logInsertStatement(`INSERT INTO publishers(name, description) VALUES ('${name}', '${description}')`, tableBeingUpdated);
 
 		for (let i = 0; i < countries.length; i++) {
 
@@ -21,7 +21,7 @@ export const createPublisher = (dbFile, name, description, countries) => {
 			stmt.run(countries[i], newPublisherId);
 			
 			tableBeingUpdated = "countryPublisher";
-			logInsertStatement(`INSERT INTO countryPublisher(name, description) VALUES (${name}, ${description})`, tableBeingUpdated);
+			logInsertStatement(`INSERT INTO countryPublisher(name, description) VALUES ('${name}', '${description}')`, tableBeingUpdated);
 
 		}
 

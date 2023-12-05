@@ -12,7 +12,7 @@ export const createImage = (dbFile, title, link, connectionId, tableToConnect) =
 		const newImageId = runStmt.lastInsertRowid;
 
 		const tableBeingUpdated = "images";
-		logInsertStatement(`INSERT INTO images(title, link) VALUES (${title}, ${link})`, tableBeingUpdated);
+		logInsertStatement(`INSERT INTO images(title, link) VALUES ('${title}', '${link}')`, tableBeingUpdated);
 
 		if (tableToConnect === "characterImageConnection") {
 			console.log(`Table ${tableToConnect} has been selected, and the code has matched the two values.`);

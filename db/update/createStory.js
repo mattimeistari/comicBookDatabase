@@ -11,7 +11,7 @@ export const createStory = (dbFile, title, description) => {
 		db.close();
 
 		const tableBeingUpdated = "stories";
-		logInsertStatement(`INSERT INTO stories(title, description) VALUES (${title}, ${description})`, tableBeingUpdated);
+		logInsertStatement(`INSERT INTO stories(title, description) VALUES ('${title}', '${description}')`, tableBeingUpdated);
 
 		return true;
 

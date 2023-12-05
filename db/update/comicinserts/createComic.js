@@ -14,7 +14,7 @@ export const createComic = (dbFile, ISBN, publicationDate, summary, issueNumber,
 		db.close();
 
 		const tableBeingUpdated = "comics independant";
-		logInsertStatement(`INSERT INTO comics(name, description) VALUES (${ISBN}, ${publicationDate}, ${summary}, ${issueNumber}, ${pageCount}, ${price}, ${publisherId})`, tableBeingUpdated);
+		logInsertStatement(`INSERT INTO comics(name, description) VALUES (${ISBN}, '${publicationDate}', '${summary}', ${issueNumber}, ${pageCount}, ${price}, ${publisherId})`, tableBeingUpdated);
 
 		return newComicId;
 
