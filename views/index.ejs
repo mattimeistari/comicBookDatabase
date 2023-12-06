@@ -12,9 +12,10 @@
     <div class="container">
     <% for( let i = 0; i < comics.length; i++ ) { %>
         <div class="comic-card">
-            <a href="products/rememberToFinish">
+            <a href="products/?productId=<%= comics[i].comicId %>">
                 <img src="<%= comics[i].coverArtLink %>" alt="<%= comics[i].name %>" class="comic-image">
                 <p><%= comics[i].name %></p>
+                <input type="hidden" name="comicId" value="<%= comics[i].comicId %>">
             </a>
         </div>
     <% } %>
