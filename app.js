@@ -1,6 +1,8 @@
 import express from "express";
 import path from "path";
 import colors from "colors";
+import session from "express-session";
+import dotenv from "dotenv";
 import { fileURLToPath } from "url";
 import { router as frontPageRouter } from "./routes/index.js";
 import { router as loginPageRouter } from "./routes/login.js";
@@ -8,6 +10,8 @@ import { router as registerPageRouter } from "./routes/register.js";
 import { router as insertPageRouter } from "./routes/insert.js";
 
 const app = express();
+
+dotenv.config();
 
 // for body parser
 app.use(express.urlencoded({ extended: false }));
@@ -22,6 +26,12 @@ app.use(express.static(staticPath));
 // template engine
 app.set("views", viewsPath);
 app.set("view engine", "ejs");
+
+app.use(session({
+	secret: process.env.SESSION_SECRET,
+	resave: true,
+	saveUnitilalized: true
+}));
 
 // routers
 app.use("/", frontPageRouter);

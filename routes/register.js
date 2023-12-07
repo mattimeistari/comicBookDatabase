@@ -24,10 +24,12 @@ router.get("/", (req, res) => {
 
 
 router.post("/", (req, res) => {
-	const passwordHash = bcrypt.hashSync(req.body.password, 10);
-	createUsers(dbFile,req.body.username, req.body.email, passwordHash);
 
-	res.redirect("/");
+	const passwordHash = bcrypt.hashSync(req.body.password, 10);
+	createUsers(dbFile, req.body.username, req.body.email, passwordHash);
+
+	res.redirect("/login");
+
 });
 
 // Export the router

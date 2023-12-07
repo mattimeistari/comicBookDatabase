@@ -243,5 +243,3 @@ VALUES  (1, 1), (2, 2), (3, 3);
 
 INSERT INTO comicStory (comicId, storyId)
 VALUES  (1, 1), (2, 2), (3, 3);
-
-

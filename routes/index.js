@@ -13,14 +13,28 @@ router.get("/", (req, res) => {
 	const title = "💀💀💀";
 
 	const comics = selectComicNamesAndImages(dbFile);
-    
+	const user = req.session.user;
+
+	console.log("asdd22");
+
+	const username = user.username;
+
 	res.render("index", {
 
 		title,
-		comics
+		comics,
+		user,
+		username
 		
 	});
 
 });
+
+router.post("/", (req, res) => {
+
+	res.redirect("/login");
+
+});
+
 
 export { router };

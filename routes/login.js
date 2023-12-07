@@ -14,9 +14,12 @@ router.get("/", (req, res) => {
 	const title = "😈😈😈";
     
 	const header = "log in";
+
+	const user = readUser(dbFile, req.body.username);
 	res.render("login", {
 		title,
-		header
+		header,
+		user
 	});
 
 });
@@ -24,21 +27,27 @@ router.get("/", (req, res) => {
 router.post("/", (req, res) => {
 
 	const user = readUser(dbFile, req.body.username);
-	console.log(user);
 
 	if (user) {
+
 		const passwordMatch = bcrypt.compareSync(req.body.password, user.password);
 
 		if (passwordMatch) {
+
 			req.session.user = user;
+			console.log("asddsasdsadasd");
 			req.session.isLoggedIn = true;
 
 			console.log(req.session.isLoggedIn);
 
 			res.redirect("/");
 			return;
+
 		} else {
-			res.redirect("/");
+
+			console.log("blud no work");
+			res.redirect("/login");
+
 		}
 		
 	}});
