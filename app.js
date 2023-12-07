@@ -8,6 +8,7 @@ import { router as frontPageRouter } from "./routes/index.js";
 import { router as loginPageRouter } from "./routes/login.js";
 import { router as registerPageRouter } from "./routes/register.js";
 import { router as insertPageRouter } from "./routes/insert.js";
+import { router as productPageRouter } from "./routes/product.js";
 
 const app = express();
 
@@ -27,10 +28,11 @@ app.use(express.static(staticPath));
 app.set("views", viewsPath);
 app.set("view engine", "ejs");
 
+// session
 app.use(session({
 	secret: process.env.SESSION_SECRET,
 	resave: true,
-	saveUnitilalized: true
+	saveUninitialized: false,
 }));
 
 // routers
@@ -38,6 +40,7 @@ app.use("/", frontPageRouter);
 app.use("/login", loginPageRouter);
 app.use("/register", registerPageRouter);
 app.use("/insert", insertPageRouter);
+app.use("/product", productPageRouter);
 
 // errors: page not found
 app.use((req, res, next) => {

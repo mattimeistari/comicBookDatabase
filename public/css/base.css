@@ -104,3 +104,15 @@ input[type="file"] {
     margin: 20px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
+
+.navbar img {
+    width: 50px
+}
+
+#navLogo {
+    width: 200px
+}
+
+#navCart {
+    float: right;
+}

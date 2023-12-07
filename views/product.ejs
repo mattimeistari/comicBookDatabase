@@ -10,10 +10,10 @@
 
     <%- include('includes/navbar') %>
 
-    <h1><%= title %></h1>
-    <img src="<%= link %>" alt="<%= title %>">
-    <p><%= description %></p>
-    <p><%= price %></p>
+    <h1><%= comic.name %></h1>
+    <img src="<%= comic.coverArtLink %>" alt="<%= comic.name %>">
+    <p><%= comic.summary %></p>
+    <p><%= comic.price %></p>
 
     <p>add 2 cart</p>
 

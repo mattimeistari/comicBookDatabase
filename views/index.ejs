@@ -12,7 +12,7 @@
     <div class="container">
     <% for( let i = 0; i < comics.length; i++ ) { %>
         <div class="comic-card">
-            <a href="products/?productId=<%= comics[i].comicId %>">
+            <a href="product/<%= comics[i].comicId %>">
                 <img src="<%= comics[i].coverArtLink %>" alt="<%= comics[i].name %>" class="comic-image">
                 <p><%= comics[i].name %></p>
                 <input type="hidden" name="comicId" value="<%= comics[i].comicId %>">
@@ -21,7 +21,7 @@
     <% } %>
     </div>
 
-    <p><% user.username %></p>
+    <p><%= username %></p>
 
 </body>
 </html>

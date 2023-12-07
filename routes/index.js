@@ -13,20 +13,45 @@ router.get("/", (req, res) => {
 	const title = "💀💀💀";
 
 	const comics = selectComicNamesAndImages(dbFile);
-	const user = req.session.user;
 
-	console.log("asdd22");
+	if (req.session.isLoggedIn) {
 
-	const username = user.username;
+		const user = req.session.user;
+		const username = user.username;
 
-	res.render("index", {
+		res.render("index", {
 
-		title,
-		comics,
-		user,
-		username
-		
-	});
+			title,
+			comics,
+			user,
+			username
+			
+		});
+
+	} else {
+
+		const user = {
+
+			userId: null,
+			username: "user is not logged in",
+			email: null,
+			password: null,
+			imageId: null
+
+		};
+
+		const username = user.username;
+
+		res.render("index", {
+
+			title,
+			comics,
+			user,
+			username
+			
+		});
+
+	}
 
 });
 
